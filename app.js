@@ -25,17 +25,17 @@ function calculateExpenses() {
     const rentCost = getInputInNumber('rent-cost');
     const clothesCost = getInputInNumber('clothes-cost');
 
-
     let totalExpensesText = document.getElementById('total-expenses');
-    const totalCost = foodCost + rentCost + clothesCost;
-    totalExpensesText.innerText = totalCost;
+    totalExpensesText.innerText = foodCost + rentCost + clothesCost;
+
 
     const income = getInputInNumber('income');
     const totalExpenses = getInnerTextInNumber('total-expenses');
     const balance = document.getElementById('balance');
-    if (income > totalExpenses) {
+    if (income >= totalExpenses) {
         balance.innerText = income - totalExpenses;
     } else {
+        // To show an error when income is less than expenses
         const showCalculation = document.getElementById('show-calculation');
         const p = document.createElement('p');
         p.innerText = 'Sorry! expenses cannot be bigger than income.'
@@ -43,5 +43,23 @@ function calculateExpenses() {
         showCalculation.appendChild(p);
 
     }
+
+}
+
+
+// Function to calculate save percentage and remaining balance after save.
+
+function calculateSaving() {
+    const savePercentage = getInputInNumber('save-percentage');
+    const balance = getInnerTextInNumber('balance');
+
+    const saving = (savePercentage / 100) * balance;
+    if (typeof savePercentage == 'number' && savePercentage > 0) {
+        const savingAmountText = document.getElementById('saving-amount');
+        savingAmountText.innerText = saving.toFixed(2);
+    }
+    const savingAmount = getInnerTextInNumber('saving-amount');
+    const remainingBalance = document.getElementById('remaining-balance');
+    remainingBalance.innerText = (balance - savingAmount).toFixed(2);
 
 }
