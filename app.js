@@ -24,12 +24,13 @@ function calculateExpenses() {
     const foodCost = getInputInNumber('food-cost');
     const rentCost = getInputInNumber('rent-cost');
     const clothesCost = getInputInNumber('clothes-cost');
+    const income = getInputInNumber('income');
+
+    const totalCost = foodCost + rentCost + clothesCost;
 
     let totalExpensesText = document.getElementById('total-expenses');
-    totalExpensesText.innerText = foodCost + rentCost + clothesCost;
+    totalExpensesText.innerText = totalCost;
 
-
-    const income = getInputInNumber('income');
     const totalExpenses = getInnerTextInNumber('total-expenses');
     const balance = document.getElementById('balance');
     if (income >= totalExpenses) {
