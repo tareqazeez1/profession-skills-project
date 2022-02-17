@@ -1,4 +1,4 @@
-/*  ----Functions for calculate expenses---- */
+
 
 // function to convert input value into number.
 
@@ -29,7 +29,8 @@ function showError(message) {
     showCalculation.appendChild(p);
 }
 
-// function to calculate all the expenses.
+/*  ----Functions for calculate expenses---- */
+
 function calculateExpenses() {
     const foodCost = getInputInNumber('food-cost');
     const rentCost = getInputInNumber('rent-cost');
@@ -64,7 +65,7 @@ function calculateExpenses() {
 }
 
 
-// Function to calculate save percentage and remaining balance after save.
+/*-------Function to calculate save percentage and remaining balance after save -----*/
 
 function calculateSaving() {
     const savePercentage = getInputInNumber('save-percentage');
