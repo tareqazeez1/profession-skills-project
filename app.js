@@ -31,9 +31,18 @@ function calculateExpenses() {
     let totalExpensesText = document.getElementById('total-expenses');
     totalExpensesText.innerText = totalCost;
 
+
     const totalExpenses = getInnerTextInNumber('total-expenses');
     const balance = document.getElementById('balance');
-    if (income >= totalExpenses) {
+    if (isNaN(totalCost) == true || isNaN(income) == true) {
+        totalExpensesText.innerText = '00';
+        const showCalculation = document.getElementById('show-calculation');
+        const p = document.createElement('p');
+        p.innerText = 'Sorry! Give a valid number!'
+        p.style.color = 'red';
+        showCalculation.appendChild(p);
+    }
+    else if (income >= totalExpenses) {
         balance.innerText = income - totalExpenses;
     } else {
         // To show an error when income is less than expenses
