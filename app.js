@@ -19,6 +19,16 @@ function getInnerTextInNumber(elementId) {
     return innerTextInNumber;
 }
 
+// function to show error message.
+
+function showError(message) {
+    const showCalculation = document.getElementById('show-calculation');
+    const p = document.createElement('p');
+    p.innerText = message;
+    p.style.color = 'red';
+    showCalculation.appendChild(p);
+}
+
 // function to calculate all the expenses.
 function calculateExpenses() {
     const foodCost = getInputInNumber('food-cost');
@@ -35,22 +45,19 @@ function calculateExpenses() {
     const totalExpenses = getInnerTextInNumber('total-expenses');
     const balance = document.getElementById('balance');
     if (isNaN(totalCost) == true || isNaN(income) == true) {
-        totalExpensesText.innerText = '00';
-        const showCalculation = document.getElementById('show-calculation');
-        const p = document.createElement('p');
-        p.innerText = 'Sorry! Give a valid number!'
-        p.style.color = 'red';
-        showCalculation.appendChild(p);
+        totalExpensesText.innerText = '00';         // to make total expense 00 when input is invalid
+
+        // It will show an error when any input is invalid
+
+        showError('Please provide a valid number!')
+
     }
     else if (income >= totalExpenses) {
         balance.innerText = income - totalExpenses;
     } else {
-        // To show an error when income is less than expenses
-        const showCalculation = document.getElementById('show-calculation');
-        const p = document.createElement('p');
-        p.innerText = 'Sorry! expenses cannot be bigger than income.'
-        p.style.color = 'red';
-        showCalculation.appendChild(p);
+        // It will show an error when income is less than expenses
+
+        showError('Sorry! expenses cannot be bigger than income')
 
     }
 
@@ -67,6 +74,8 @@ function calculateSaving() {
     if (typeof savePercentage == 'number' && savePercentage > 0) {
         const savingAmountText = document.getElementById('saving-amount');
         savingAmountText.innerText = saving.toFixed(2);
+    } else {
+        showError('Please provide a valid input to save money!')
     }
     const savingAmount = getInnerTextInNumber('saving-amount');
     const remainingBalance = document.getElementById('remaining-balance');
