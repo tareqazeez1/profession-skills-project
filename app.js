@@ -5,7 +5,7 @@
 function getInputInNumber(inputId) {
     const input = document.getElementById(inputId);
     const inputInText = input.value;
-    const inputAmount = parseInt(inputInText);
+    const inputAmount = parseFloat(inputInText);
     input.value = '';
     return inputAmount;
 }
@@ -15,7 +15,7 @@ function getInputInNumber(inputId) {
 function getInnerTextInNumber(elementId) {
     const element = document.getElementById(elementId);
     const innerText = element.innerText;
-    const innerTextInNumber = parseInt(innerText);
+    const innerTextInNumber = parseFloat(innerText);
     return innerTextInNumber;
 }
 
@@ -25,8 +25,10 @@ function calculateExpenses() {
     const rentCost = getInputInNumber('rent-cost');
     const clothesCost = getInputInNumber('clothes-cost');
 
+
     let totalExpensesText = document.getElementById('total-expenses');
-    totalExpensesText.innerText = foodCost + rentCost + clothesCost;
+    const totalCost = foodCost + rentCost + clothesCost;
+    totalExpensesText.innerText = totalCost;
 
     const income = getInputInNumber('income');
     const totalExpenses = getInnerTextInNumber('total-expenses');
@@ -34,7 +36,12 @@ function calculateExpenses() {
     if (income > totalExpenses) {
         balance.innerText = income - totalExpenses;
     } else {
-        console.log('expenses is bigger')
+        const showCalculation = document.getElementById('show-calculation');
+        const p = document.createElement('p');
+        p.innerText = 'Sorry! expenses cannot be bigger than income.'
+        p.style.color = 'red';
+        showCalculation.appendChild(p);
+
     }
 
 }
