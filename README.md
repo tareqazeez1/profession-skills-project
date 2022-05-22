@@ -2,7 +2,7 @@
 
 A calculator for students who want to keep track their income, expenses and savings.
 
-##Link: [Money Manager]([https://money-manager-js.netlify.app])
+##Link: ([Money Manager][https://money-manager-js.netlify.app])
 
 ## Technologies
 
